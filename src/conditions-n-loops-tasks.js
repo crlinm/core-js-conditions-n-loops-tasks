@@ -168,8 +168,13 @@ function isPalindrome(str) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === letter) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
@@ -212,8 +217,25 @@ function isContainNumber(num, digit) {
  *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
-function getBalanceIndex(/* arr */) {
-  throw new Error('Not implemented');
+function getBalanceIndex(arr) {
+  const n = arr.length;
+  const prefix = new Array(n);
+  const [ff] = arr;
+  prefix[0] = ff;
+  for (let i = 1; i < n; i += 1) {
+    prefix[i] = prefix[i - 1] + arr[i];
+  }
+  const prefixOpp = new Array(n);
+  prefixOpp[n - 1] = arr[n - 1];
+  for (let i = n - 2; i >= 0; i -= 1) {
+    prefixOpp[i] = prefixOpp[i + 1] + arr[i];
+  }
+  for (let i = 0; i < n - 2; i += 1) {
+    if (prefix[i] === prefixOpp[i + 2]) {
+      return i + 1;
+    }
+  }
+  return -1;
 }
 
 /**
