@@ -128,8 +128,64 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  const digits = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+    'point',
+  ];
+  const n = numberStr.length;
+  let res = '';
+  let curr = '';
+  for (let i = 0; i < n; i += 1) {
+    switch (numberStr[i]) {
+      case '0':
+        curr = digits[Number(numberStr[i])];
+        break;
+      case '1':
+        curr = digits[Number(numberStr[i])];
+        break;
+      case '2':
+        curr = digits[Number(numberStr[i])];
+        break;
+      case '3':
+        curr = digits[Number(numberStr[i])];
+        break;
+      case '4':
+        curr = digits[Number(numberStr[i])];
+        break;
+      case '5':
+        curr = digits[Number(numberStr[i])];
+        break;
+      case '6':
+        curr = digits[Number(numberStr[i])];
+        break;
+      case '7':
+        curr = digits[Number(numberStr[i])];
+        break;
+      case '8':
+        curr = digits[Number(numberStr[i])];
+        break;
+      case '9':
+        curr = digits[Number(numberStr[i])];
+        break;
+      case '-':
+        curr = 'minus';
+        break;
+      default:
+        curr = 'point';
+    }
+    res += i < n - 1 ? `${curr} ` : curr;
+  }
+  return res;
 }
 
 /**
